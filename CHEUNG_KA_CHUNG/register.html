@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medilab Free Bootstrap HTML5 Template</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <style>
+    {
+      box-sizing: border-box
+    }
+
+    /* Add padding to containers */
+button:focus {
+    border: none;
+    outline: none;
+}
+  
+    .container-form {
+      padding: 0px;
+    }
+    /* Full-width input fields */
+
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit/register button */
+
+    .registerbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+      opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+
+    a {
+      color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+
+    .signin {
+      background-color: #f1f1f1;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border-radius: 10px;
+      box-shadow: -1px 5px 20px #000000;
+    }
+
+    tr {
+      border: 0px solid #E0607E;
+    }
+
+    td {
+      border: 0px solid #607ee0;
+      padding: 10px 30px;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    td:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    td:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    /*第一欄第一列：左上*/
+
+    tr:first-child td:first-child {
+      border-top-left-radius: 10px;
+    }
+
+    /*第一欄最後列：左下*/
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+
+    /*最後欄第一列：右上*/
+
+    tr:first-child td:last-child {
+      border-top-right-radius: 10px;
+    }
+
+    /*最後欄第一列：右下*/
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+    
+ /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 350px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+    -webkit-border-radius: 15px !important;
+    -moz-border-radius: 15px !important;
+    border-radius: 15px !important; 
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: #000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 16px 10px;
+    background-color: #ffffff;
+    color: white;
+}
+
+.modal-body {padding: 16px 14px;}
+
+.modal-footer {
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #ffffff;
+    color: white;
+}
+.button3 {
+    color: black; 
+    border: 2px solid #e7e7e7;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button3:hover {
+    background-color: #e7e7e7;
+    color: white;
+}
+.loading{
+   display:none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+    
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #C00E0E;
+  width: 100px;
+  height: 100px;
+   margin: 30% auto; /* 15% from the top and centered */
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<script>
+  
+  
+  
+$(document).ready(function(){
+  $("#warmingLogin").hide();  
+  $("#errorLogin").hide();  
+  $('#myModal').hide();  
+  $('#closeBtn').click(function(e){
+     $('#myModal').hide();
+     $(loading).show();
+     $(location).attr('href', '/login');
+  });
+   $('#closeBtn2').click(function(e){
+     $('#myModal').hide();
+     $(loading).show();
+     $(location).attr('href', '/login');
+  });
+  $("#registerbtn").click(function(e){
+  var username=$("#username").val();
+  var password=$("#password").val(); 
+  var repassword=$("#repeatpw").val(); 
+  var mydata="uname="+username+"&pwd="+password;  
+    
+    
+  if (password != repassword){
+     $("#warmingLogin").show();
+  }
+  else if (username == ""){
+      $("#warmingLogin").show();
+    }else if (password == ""){
+       $("#warmingLogin").show();
+    }else {
+         $("#warmingLogin").hide();
+          $.ajax({
+                url: "http://port-8080.305cde-ding203869.codeanyapp.com/register",
+                type: "POST",
+                data: mydata,
+                success: function (result) {
+                  if(result == "1"){
+                    $("#errorLogin").hide(); 
+                    $('#myModal').show();
+                    }
+                  if(result == "0"){
+                   $("#errorLogin").show(); 
+                   $('#myModal').hide(); 
+                    }
+                },
+                error: function(result){
+                    console.log("error?");
+                  }
+              }); 
+        }
+  })
+    $("#signinBtn").click(function(e){
+      $(loading).show();
+      $(location).attr('href', '/login');
+     
+   });
+});
+  
+   
+</script>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <!--banner-->
+    <div id="loading" class="loading">
+    <div class="loader"></div>
+   </div>
+  <div id="registation" class="registation">
+    <section id="banner-register" class="banner-register">
+      <div class="bg-color-register">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="col-md-12">
+              <div class="navbar-header"><a class="navbar-brand"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a></div>
+          </div>
+      </div>
+      </nav>
+      <!-- banner -->
+      <!-- register form -->
+  </div>
+  </section>
+  <section id="form-register" class="form-register">
+    <table align="center" style="background-color: #ffffff; ">
+      <tr>
+      <td align="center">
+         <h4 style="font-size: 1.5em; font-weight: 700;">
+           Register
+        </h4>
+         <hr>
+        </td>
+      </tr>
+      <tr>
+        <td> 
+            <div class="container-form">
+              <p align="center" style="font-size: 16px; color: #99999 ; margin-top:-15px">Please fill in this form to create an account.</p>
+              <label for="uname"><b>Username</b></label><input class="form-control" type="text" placeholder="Enter Username" name="uname" id ="username" required>
+              <label for="psw"><b>Password</b></label><input class="form-control" type="password" placeholder="Enter Password" name="psw" id ="password" required><label for="psw-repeat">
+              <b>Repeat Password</b></label>
+              <input class="form-control"
+                type="password" placeholder="Repeat Password" name="psw-repeat" id ="repeatpw" required>
+               <div class="warmingLogin" id="warmingLogin" style="background-color:red; border-radius:3px;">
+                 <p style="color:white; text-align: center; font-size: 8pt;">
+                   Register failed. Please check if the fields are correctly fiiled.
+                  </p>
+                </div>
+               <div class="warmingLogin" id="errorLogin" style="background-color:red; border-radius:3px;">
+                 <p style="color:white; text-align: center; font-size: 8pt;">
+                   Register failed. Your username is already exist.
+                  </p>
+                </div>
+                <hr>
+                <button type="submit" id="registerbtn" class="btn btn-green btn-block btn-flat">Register</button>
+                <p align="center" style="margin-top: 10px;">Already have an account? <a id="signinBtn">Sign in</a>.</p>
+            </div>
+          <!-- register form -->
+        </td>
+      </tr>
+    </table>
+    </div>
+  </section>
+  
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="closeBtn" class="close">&times;</span>
+      <h2>Thank you!</h2>
+    </div>
+    <div class="modal-body">
+      <p><strong>Thank you for your register.</strong> Please login with your account in login page.</p>
+    </div>
+    <div class="modal-footer">
+       <button id="closeBtn2" class="button3">Confirm
+     </button>
+    </div>
+  </div>
+</div>
+<!-- The Modal -->
+  
+</body>

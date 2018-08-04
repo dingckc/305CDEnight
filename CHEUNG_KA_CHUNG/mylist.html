@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<style>
+    {
+      box-sizing: border-box
+    }
+
+    /* Add padding to containers */
+.mySlides {display:none}
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+ .itemButton{
+      background-color:rgba(192, 14, 14, 0.91); 
+      padding-left: 20px;
+  }
+    .container-form {
+      padding: 0px;
+    }
+    /* Full-width input fields */
+    button:focus {
+    border: none;
+    outline: none;
+}
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit/register button */
+
+    .registerbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+
+    .registerbtn:hover {
+      opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+
+    a {
+      color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+
+    .signin {
+      background-color: #f1f1f1;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border-radius: 10px;
+      box-shadow: -1px 5px 20px #000000;
+    }
+
+    tr {
+      border: 0px solid #E0607E;
+    }
+
+    td {
+      border: 0px solid #607ee0;
+      padding: 10px 30px;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    td:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    td:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    /*第一欄第一列：左上*/
+
+    tr:first-child td:first-child {
+      border-top-left-radius: 10px;
+    }
+
+    /*第一欄最後列：左下*/
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 10px;
+    }
+
+    /*最後欄第一列：右上*/
+
+    tr:first-child td:last-child {
+      border-top-right-radius: 10px;
+    }
+
+    /*最後欄第一列：右下*/
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 10px;
+    }
+    
+ /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 350px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+    -webkit-border-radius: 15px !important;
+    -moz-border-radius: 15px !important;
+    border-radius: 15px !important; 
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: #000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 16px 10px;
+    background-color: #ffffff;
+    color: white;
+}
+
+.modal-body {padding: 16px 14px;}
+
+.modal-footer {
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #ffffff;
+    color: white;
+}
+.button3 {
+    color: black; 
+    border: 2px solid #e7e7e7;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button3:hover {
+    background-color: #e7e7e7;
+    color: white;
+}
+.loading{
+   display:none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+    
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #C00E0E;
+  width: 100px;
+  height: 100px;
+   margin: 30% auto; /* 15% from the top and centered */
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}  
+ 
+ .dropbtn {
+    background-color: Transparent;
+    color: white;
+    padding: 13px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.dropbtn:hover {
+    background-color: rgba(192, 14, 14, 0.21)
+}
+  .dropbtn:focus  {
+    background-color: rgba(192, 14, 14, 0.8)
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    color: white;
+    text-transform: uppercase;
+    display: none;
+    border:none;
+    position: absolute;
+    background-color: #999999;
+    min-width: 150px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown-content a {  color: white;
+    padding: 12px 50px;
+    text-decoration: none;
+    display: block;
+     border:none;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;} 
+  
+  .loading{
+   display:none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+    
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #C00E0E;
+  width: 100px;
+  height: 100px;
+   margin: 30% auto; /* 15% from the top and centered */
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+  .removebutton{
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+      padding: 12px 28px;
+    border-radius: 4px;}
+  }
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <div id="loading" class="loading">
+    <div class="loader"></div>
+   </div>
+  <!--banner-->
+ <div id="registation" class="registation">
+  <section id="banner-register" class="banner-register">
+    <div class="bg-color-register">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+              <a class="navbar-brand" href="/index"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class=""><a href="/index">Home</a></li>
+                <li class=""><a href="/myfav">Booking</a></li>
+                <li class="active"><a href="/myfav">Booking List</a></li>
+                <li class=""><div class="dropdown"><button onclick="myFunction()" class="dropbtn" id="thebutton"><span class="helloUserID"></span></button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a id="logout" class="logout">Logout</a>
+                </div>
+                </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="banner-logo text-center">
+              <img src="img/logo.png" class="img-responsive">
+            </div>
+            <div class="banner-text text-center">
+              <h1 class="white">SAY NO TO Illegal DRUGS & Alcohol Abuse!!<br>SAY YES TO GOOD HEALTH</h1>
+              <p>Ask for a support and request help be quick.</p>
+<!--               <a href="#contact" class="btn btn-appoint"><span>Make an Appointment</span></a> -->
+            </div>
+            <div class="overlay-detail text-center">
+              <a href="#service"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+  <!--service-->
+  <section id="favorite" class="section-padding">
+   <table align="center" style="background-color: #ffffff; width: 800px;">
+      <tr>
+      <td align="center"  colspan = "5">
+         <h4 style="font-size: 1.5em; font-weight: 700;">
+           Booking List
+        </h4>
+         <hr>
+        </td>
+      </tr>
+      <tr>
+        <td colspan = "5"> 
+            <div class="container-form">
+              <p align="center" style="font-size: 16px; color: #99999 ; margin-top:-15px">This is your booking list of the doctors</p>
+            </div>
+          <!-- register form -->
+        </td>
+      </tr>         
+                    <tr>
+                       <td>Number</td>
+                       <td>Username</td>
+                       <td>Doctor</td>
+                       <td>Booking ID</td>
+                       <td>Delete</td>
+                    </tr>
+                    <tr>
+                       <td class = "tabnum"></td>
+                       <td class = "tabname"></td>
+                       <td class = "tablink"></td>
+                       <td class = "tabid"></td>
+                       <td class = "removelink"></td>
+                    </tr>
+                    <tr>
+                       <td class = "tabnum"></td>
+                       <td class = "tabname"></td>
+                       <td class = "tablink"></td>
+                       <td class = "tabid"></td>
+                       <td class = "removelink"></td>
+                    </tr>
+                    <tr>
+                       <td class = "tabnum"></td>
+                       <td class = "tabname"></td>
+                       <td class = "tablink"></td>
+                       <td class = "tabid"></td>
+                       <td class = "removelink"></td>
+                    </tr>
+                    <tr>
+                       <td class = "tabnum"></td>
+                       <td class = "tabname"></td>
+                       <td class = "tablink"></td>
+                       <td class = "tabid"></td>
+                       <td class = "removelink"></td>
+                    </tr>
+             </tr>
+    <tr>
+      <td colspan = "5">
+           <div class="sucessLogin" id="sucessLogin" style="background-color:red; border-radius:3px; display:none;">
+              <p style="color:white; text-align: center; font-size: 8pt;">
+                   There is no booking!
+             </p>
+           </div>     
+      </td>
+    </tr>
+    </table>
+    </div>
+  </section>
+  <!--/ service-->
+  <!--cta-->
+  <!--/ contact-->
+  <!--footer-->
+  <footer id="footer">
+    <div class="top-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">About Us</h4>
+            </div>
+            <div class="info-sec">
+              <p>Praesent convallis tortor et enim laoreet, vel consectetur purus latoque penatibus et dis parturient.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Quick Links</h4>
+            </div>
+            <div class="info-sec">
+              <ul class="quick-info">
+                <li><a href="index.html"><i class="fa fa-circle"></i>Home</a></li>
+                <li><a href="#service"><i class="fa fa-circle"></i>Service</a></li>
+                <li><a href="#contact"><i class="fa fa-circle"></i>Appointment</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Follow us</h4>
+            </div>
+            <div class="info-sec">
+              <ul class="social-icon">
+                <li class="bglight-blue"><i class="fa fa-facebook"></i></li>
+                <li class="bgred"><i class="fa fa-google-plus"></i></li>
+                <li class="bgdark-blue"><i class="fa fa-linkedin"></i></li>
+                <li class="bglight-blue"><i class="fa fa-twitter"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-line">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            © Copyright Medilab Theme. All Rights Reserved
+            <div class="credits">
+              <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+              -->
+              Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ footer-->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+ <script>
+$(document).ready(function(){
+mylogin=localStorage.getItem("loginAccount");
+var mydata="user="+mylogin;
+        
+				$.ajax(
+				{
+				  url: "http://port-8080.305cde-ding203869.codeanyapp.com/readfavourlist",
+					type: 'POST',
+					data: mydata,
+          async:false,
+					success: function(resultReturn)
+					{ 
+            if (resultReturn == "[]"){
+               $('#sucessLogin').css("display", "block");
+            }
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].uname;
+				      document.getElementsByClassName("tablink")[i].innerHTML = "<img src='"+stringObj[i].favourite+"'>";
+					    document.getElementsByClassName("tabid")[i].innerHTML = stringObj[i]._id;
+              document.getElementsByClassName("removelink")[i].innerHTML = "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+            alert(xhr.responseText);
+      		}
+				});
+  
+  
+  
+$("button").click(function(){
+var currentbutton=this.id;
+
+if(currentbutton=="itemBtn1"){
+  var data=$("#doctor1").attr("src");
+} 
+else if(currentbutton=="itemBtn2"){
+  var data=$("#doctor2").attr("src");
+} 
+else if(currentbutton=="itemBtn3"){
+  var data=$("#doctor3").attr("src");
+} 
+else if(currentbutton=="itemBtn4"){
+  var data=$("#doctor4").attr("src");
+}
+
+   if (localStorage.getItem("loginAccount") !== null) {
+        $.ajax(
+            {	
+              url: "http://port-8080.305cde-ding203869.codeanyapp.com/myfav",
+              type: 'POST',
+              data: "id="+localStorage.getItem("loginAccount")+"&fav="+data,
+              success: function(result){
+                //checkFav(result);
+              },error: function (xhr, textStatus, errorThrown) {
+                //alert(textStatus);
+                console.log(textStatus);
+              }
+            }
+          );
+      }
+  
+  if (sessionStorage['loginAccount']) {
+     $.ajax(
+            {	
+              url: "http://port-8080.305cde-ding203869.codeanyapp.com/myfav",
+              type: 'POST',
+              data: "id="+sessionStorage.getItem("loginAccount")+"&fav="+data,
+              success: function(result){
+                //checkFav(result);
+              },error: function (xhr, textStatus, errorThrown) {
+                //alert(textStatus);
+                console.log(textStatus);
+              }
+            }
+          );
+     }
+	
+
+});			
+  if (localStorage.getItem("loginAccount") !== null) {
+      var userLoginID = localStorage.getItem("loginAccount");
+      $("#thebutton span").html("Hello, " + userLoginID);
+      }
+  
+  if (sessionStorage['loginAccount']) {
+      var userLoginID = sessionStorage.getItem("loginAccount");
+       $("#thebutton span").html("Hello, " + userLoginID);
+     }
+    
+  $("#logout").click(function(e){
+     $(loading).show();
+     $.post('/logout')
+    localStorage.clear();
+    sessionStorage.clear();
+    $(location).attr('href', '/login');
+  })
+  $("#helloUserID").click(function(e){
+    myFunction();
+  })
+});
+  
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// $("#refresh").click(function()
+// 	{
+// 		  var mydata="user="+mylogin;
+        
+// 				$.ajax(
+// 				{
+// 				  url: "http://port-8080.305cde-ding203869.codeanyapp.com/readfavourlist",
+// 					type: 'POST',
+// 					data: mydata,
+// 					success: function(resultReturn)
+// 					{ 
+// 						//alert("search success");
+// 						//alert(JSON.stringify(resultReturn));
+// 			    //  var _stringObj = JSON.stringify(resultReturn);
+// 			      var stringObj = JSON.parse(resultReturn);
+// 			      for(i = 0; i < stringObj.length; i++)
+//             {
+// 					    var num = i + 1;
+// 					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+// 					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].uname;
+// 				      document.getElementsByClassName("tablink")[i].innerHTML = "<img src='"+stringObj[i].favourite+"'>";
+// 					    document.getElementsByClassName("tabid")[i].innerHTML = stringObj[i]._id;
+//               document.getElementsByClassName("removelink")[i].innerHTML = "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+// 				     }
+// 					},error: function (xhr, textStatus, errorThrown) 
+// 					{
+// 						alert("search failed");
+//             alert(xhr.responseText);
+//       		}
+// 				});
+			
+//    });    
+ 
+   
+$(".removelink").click(function(e)
+	{
+   $(loading).show();
+		removeid=$(this).closest('tr').children('td.tabid').text();
+  var mydata="removeid="+removeid;
+      
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+          url: "http://port-8080.305cde-ding203869.codeanyapp.com/removefavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+            location.reload()
+						//alert("search success");
+         
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				       document.getElementsByClassName("tablink")[i].innerHTML = "<img src='"+stringObj[i].favourite+"'>";
+					    document.getElementsByClassName("tabid")[i].innerHTML = stringObj[i]._id;
+              document.getElementsByClassName("removelink")[i].innerHTML = "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				     }
+            
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>  
+</body>
+
+</html>

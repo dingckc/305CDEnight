@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Index</title>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<script>
+$(document).ready(function(){
+    $.ajax({
+				url : "http://api.wunderground.com/api/b20b6bbf1fd069a8/geolookup/conditions/q/HK/HongKong.json",
+				dataType : "jsonp",
+				success : function(parsed_json) {
+					var temp_c = parsed_json['current_observation']['temp_c'];
+          var weather = parsed_json['current_observation']['weather'];
+					document.getElementById("temperature").innerHTML =" Today temperature is "+ temp_c + "&deg;C" + " and " + weather;
+				}
+				});
+  
+  $("#warmingLogin").hide(); 
+   
+  if (localStorage.getItem("loginAccount") !== null) {
+      var userLoginID = localStorage.getItem("loginAccount");
+      $("#thebutton span").html("Hello, " + userLoginID);
+      }
+  
+  if (sessionStorage['loginAccount']) {
+      var userLoginID = sessionStorage.getItem("loginAccount");
+       $("#thebutton span").html("Hello, " + userLoginID);
+     }
+    
+  $("#logout").click(function(e){
+     $(loading).show();
+     $.post('/logout')
+    localStorage.clear();
+    sessionStorage.clear();
+    $(location).attr('href', '/login');
+  })
+  $("#helloUserID").click(function(e){
+    myFunction();
+  })
+});
+  
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+  
+</script>  
+<style>
+  
+ button:focus {
+    border: none;
+    outline: none;
+} 
+  
+ .dropbtn {
+    background-color: Transparent;
+    color: white;
+    padding: 13px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+   text-transform: uppercase;
+}
+
+.dropbtn:hover {
+    background-color: rgba(192, 14, 14, 0.21)
+}
+  .dropbtn:focus  {
+    background-color: rgba(192, 14, 14, 0.8)
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    color: white;
+    text-transform: uppercase;
+    display: none;
+     border:none;
+    position: absolute;
+    background-color: #999999;
+    min-width: 150px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 1;
+}
+
+.dropdown-content a {  color: white;
+    padding: 12px 50px;
+    text-decoration: none;
+    display: block;
+     border:none;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;} 
+  
+  .loading{
+   display:none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+    
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #C00E0E;
+  width: 100px;
+  height: 100px;
+   margin: 30% auto; /* 15% from the top and centered */
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <div id="loading" class="loading">
+    <div class="loader"></div>
+   </div>
+  <!--banner-->
+  <section id="banner" class="banner">
+    <div class="bg-color">
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="col-md-12">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+              <a class="navbar-brand" href="#banner"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#banner">Home</a></li>
+                <li class=""><a href="#service">Services</a></li>
+                <li class=""><a href="#about">About</a></li>
+                <li class=""><a href="#contact">Contact</a></li>
+                <li class=""><div class="dropdown"><button onclick="myFunction()" class="dropbtn" id="thebutton"><span class="helloUserID"></span></button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a id="logout" class="logout">Logout</a>
+                </div>
+                </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="banner-info">
+            <div class="banner-logo text-center">
+              <img src="img/logo.png" class="img-responsive">
+            </div>
+            <div class="banner-text text-center">
+              <p>
+                  <div class="temperature" id="temperature"></div>
+              </p>
+              <h1 class="white">SAY NO TO Illegal DRUGS & Alcohol Abuse!!<br>SAY YES TO GOOD HEALTH</h1>
+              <p>Ask for a support and request help be quick.</p>
+              <a href="/myfav" class="btn btn-appoint"><span>Make an Appointment</span></a>
+            </div>
+            <div class="overlay-detail text-center">
+              <a href="#service"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ banner-->
+  <!--service-->
+  <section id="service" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4">
+          <h2 class="ser-title">Our Service</h2>
+          <hr class="botm-line">
+          <p><iframe width="360" height="215" src="https://www.youtube.com/embed/3I2wmr8iVJU?autoplay=1&loop=1&rel=0&amp;showinfo=0&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-stethoscope"></i>
+            </div>
+            <div class="icon-info">
+              <h4>24 Hour Support</h4>
+               <ul style="list-style-type:disc">
+                <li>To enhance the drug abuser’s concern to their health and to enhance their motivation on quitting drugs</li>
+                <li>To deal with their drug-related health problemsn</li>
+              </ul>
+            </div>
+          </div>
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-ambulance"></i>
+            </div>
+            <div class="icon-info">
+              <h4>Individual Counseling</h4>
+                <ul style="list-style-type:disc">
+                <li>Enhancing the motivation of clients to cease abusing drug</li>
+                <li>Assisting the clients to formulate and implement their drug treatment and rehabilitation plan</li>
+                <li>Teaching clients relapse prevention skills</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-user-md"></i>
+            </div>
+            <div class="icon-info">
+              <h4>Drug Test Service</h4>
+              <p>Our Club provides urine tests and hair tests on drugs to help clients maintain abstinence and to verify their abstinent status.<br><br><strong style="color: red">Drug Test Free!</strong></p>
+            </div>
+          </div>
+          <div class="service-info">
+            <div class="icon">
+              <i class="fa fa-medkit"></i>
+            </div>
+            <div class="icon-info">
+              <h4>Family Members of Drug Counseling</h4>
+              <ul style="list-style-type:disc">
+                <li>Assisting the family members of drug abusers to deal with the drug abuse problem.</li>
+                <li>Enhancing the communication between the family members and the drug abuser</li>
+                <li>Providing emotional support</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ service-->
+  <!--cta-->
+  <section id="cta-1" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="schedule-tab">
+          <div class="col-md-4 col-sm-4 bor-left">
+            <div class="mt-boxy-color"></div>
+            <div class="medi-info">
+              <h3>Common Type of<br>Drugs Abused</h3>
+              <p>Most of the common drugs in the list which are easily to find on the drugs market.</p>
+              <a href="/search" class="medi-info-btn">READ MORE</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <div class="medi-info">
+              <h3>Refusal 7 Skills</h3>
+              <p>Show 7 methods how you can avoid the drugs or when someone sells you drugs.</p>
+              <a href="#" class="medi-info-btn">READ MORE</a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 mt-boxy-3">
+            <div class="mt-boxy-color"></div>
+            <div class="time-info">
+              <h3>Opening Hours</h3>
+              <table style="margin: 8px 0px 0px;" border="0">
+                <tbody>
+                  <tr>
+                    <td>Monday - Friday</td>
+                    <td>8.00 - 17.00</td>
+                  </tr>
+                  <tr>
+                    <td>Saturday</td>
+                    <td>9.30 - 17.30</td>
+                  </tr>
+                  <tr>
+                    <td>Sunday</td>
+                    <td>9.30 - 15.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--cta-->
+  <!--about-->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="section-title">
+            <h2 class="head-title lg-line">The Medilab <br>Mini Game</h2>
+            <hr class="botm-line">
+            <p class="sec-para">Feeling a bit stressed or bored? <p>
+            
+            </p><Strong>Let's play the mini game!</Strong> </p>
+          </div>
+        </div>
+          <div class="col-md-9 col-sm-8 col-xs-12">
+          <div style="visibility: visible;" class="col-sm-9 more-features-box">
+            <div class="more-features-box-text">
+              <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
+              <div class="more-features-box-text-description" style="padding-left:350px;">
+               <iframe src="https://www.silvergames.com/en/tetris/iframe" width="300" height="400" style="margin:0;padding-left:0;border:0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ about-->
+  <!--doctor team-->
+  <section id="doctor-team" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">Meet Our Doctors!</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <div class="thumbnail">
+            <img src="img/doctor1.jpg" alt="..." class="team-img">
+            <div class="caption">
+              <h3>Jessica Wally</h3>
+              <p>Doctor</p>
+              <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <div class="thumbnail">
+            <img src="img/doctor2.jpg" alt="..." class="team-img">
+            <div class="caption">
+              <h3>Iai Donas</h3>
+              <p>Doctor</p>
+              <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <div class="thumbnail">
+            <img src="img/doctor3.jpg" alt="..." class="team-img">
+            <div class="caption">
+              <h3>Amanda Denyl</h3>
+              <p>Doctor</p>
+              <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6">
+          <div class="thumbnail">
+            <img src="img/doctor4.jpg" alt="..." class="team-img">
+            <div class="caption">
+              <h3>Jason Davis</h3>
+              <p>Doctor</p>
+              <ul class="list-inline">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ doctor team-->
+  <!--testimonial-->
+  <section id="testimonial" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">see what our members are saying?</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>The doctors are very helpful and willing to listen to my heart. I can regain trust from my firends and family so I don't have to rely on drugs.</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="img/thumb.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Peter<span>Lee</span></h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>I used to think that doctors are doctors but here, they are my firends who support me as always. They helped me going through my bad days. </p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="img/thumb.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Cass<span>Leung</span></h3>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <div class="testi-details">
+            <!-- Paragraph -->
+            <p>Rehab is never easy. Doctors and staffs here are open for all people from different backgrounds. It feels like a home to me</p>
+          </div>
+          <div class="testi-info">
+            <!-- User Image -->
+            <a href="#"><img src="img/thumb.png" alt="" class="img-responsive"></a>
+            <!-- User Name -->
+            <h3>Alex<span>Texas</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ testimonial-->
+  <!--cta 2-->
+  <section id="cta-2" class="section-padding">
+    <div class="container">
+      <div class=" row">
+        <div class="col-md-2"></div>
+        <div class="text-right-md col-md-4 col-sm-4">
+          <h2 class="section-title white lg-line-map">Our Hospital Location</h2>
+        </div>
+        <div id="map" style="width:100%;height:500px"></div>
+
+      <script>
+      var map;
+      function initMap() {
+    
+          var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+              center: new google.maps.LatLng(22.27969493,114.18384875),
+              zoom:18,
+              mapTypeId:google.maps.MapTypeId.HYBRID
+            };
+        var map = new google.maps.Map(mapCanvas,mapOptions);
+        
+        
+        
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGkA0rCDVfQvnZ83ftUTWcmZ2YBbitFRo&callback=initMap"
+    async defer></script>
+        
+        <div class="col-md-2"></div>
+      </div>
+      
+    </div>
+  </section>
+  <!--cta-->
+  <!--contact-->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="ser-title">Contact us</h2>
+          <hr class="botm-line">
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <h3>Contact Info</h3>
+          <div class="space"></div>
+          <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>321 Awesome Street<br> New York, NY 17022</p>
+          <div class="space"></div>
+          <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>info@companyname.com</p>
+          <div class="space"></div>
+          <p><i class="fa fa-phone fa-fw pull-left fa-2x"></i>+1 800 123 1234</p>
+        </div>
+        <div class="col-md-8 col-sm-8 marb20">
+          <div class="contact-info">
+            <h3 class="cnt-ttl">Having Any Query! Or Book an appointment</h3>
+            <div class="space"></div>
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form action="" method="post" role="form" class="contactForm">
+              <div class="form-group">
+                <input type="text" name="name" class="form-control br-radius-zero" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control br-radius-zero" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control br-radius-zero" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control br-radius-zero" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validation"></div>
+              </div>
+
+              <div class="form-action">
+                <button type="submit" class="btn btn-form">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ contact-->
+  <!--footer-->
+  <footer id="footer">
+    <div class="top-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">About Us</h4>
+            </div>
+            <div class="info-sec">
+              <p>Praesent convallis tortor et enim laoreet, vel consectetur purus latoque penatibus et dis parturient.</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Quick Links</h4>
+            </div>
+            <div class="info-sec">
+              <ul class="quick-info">
+                <li><a href="index.html"><i class="fa fa-circle"></i>Home</a></li>
+                <li><a href="#service"><i class="fa fa-circle"></i>Service</a></li>
+                <li><a href="#contact"><i class="fa fa-circle"></i>Appointment</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 marb20">
+            <div class="ftr-tle">
+              <h4 class="white no-padding">Follow us</h4>
+            </div>
+            <div class="info-sec">
+              <ul class="social-icon">
+                <li class="bglight-blue"><i class="fa fa-facebook"></i></li>
+                <li class="bgred"><i class="fa fa-google-plus"></i></li>
+                <li class="bgdark-blue"><i class="fa fa-linkedin"></i></li>
+                <li class="bglight-blue"><i class="fa fa-twitter"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-line">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            © Copyright Medilab Theme. All Rights Reserved
+            <div class="credits">
+              <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medilab
+              -->
+              Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ footer-->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="contactform/contactform.js"></script>
+
+</body>
+
+</html>
